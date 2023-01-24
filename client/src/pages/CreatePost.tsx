@@ -66,7 +66,7 @@ const CreatePost = () => {
     }
   }
 
-  const handleChange = (e: FormEvent) => {
+  const handleChange = (e: any) => {
     setForm({ ...form, [e?.target?.name]: e?.target?.value })
   }
 
