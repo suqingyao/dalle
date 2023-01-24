@@ -51,13 +51,13 @@ const Home = () => {
     fetchPosts()
   }, [])
 
-  const handleSearchChange = (e: FormEvent) => {
+  const handleSearchChange = (e: any) => {
     clearTimeout(searchTimeout!)
     setSearchText(e.target.value)
     setSearchTimeout(
       setTimeout(() => {
         const searchResults = allPosts.filter(
-          (item) =>
+          (item: any) =>
             item.name.toLowerCase().includes(searchText.toLowerCase()) ||
             item.prompt.toLowerCase().includes(searchText.toLowerCase())
         )
