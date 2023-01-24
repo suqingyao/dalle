@@ -1,6 +1,6 @@
 import { preview } from '@/assets'
 import { FormFields, Loader } from '@/components'
-import { getRandomPrompt } from '@/utils'
+import { getRandomPrompt, request } from '@/utils'
 import { FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -18,7 +18,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImage(true)
-        const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        const response = await request('/api/v1/dalle', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ const CreatePost = () => {
       setLoading(true)
 
       try {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
+        const response = await request('/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

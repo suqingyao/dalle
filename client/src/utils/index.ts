@@ -1,4 +1,7 @@
+import FileSaver from 'file-saver'
 import { surpriseMePrompts } from '@/constants'
+
+const API_URL = import.meta.env.VITE_API_URL
 
 export function getRandomPrompt(prompt: string): string {
   const randomIndex = Math.floor(Math.random() * surpriseMePrompts.length)
@@ -7,4 +10,12 @@ export function getRandomPrompt(prompt: string): string {
   if (randomPrompt === prompt) return getRandomPrompt(prompt)
 
   return randomPrompt
+}
+
+export async function downloadImage(_id: string, photo: string) {
+  FileSaver.saveAs(photo, `download-${_id}.jpg`)
+}
+
+export function request(input: RequestInfo | URL, init?: RequestInit) {
+  return fetch(`${API_URL}${input}`, init)
 }
