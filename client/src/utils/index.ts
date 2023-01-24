@@ -17,5 +17,7 @@ export async function downloadImage(_id: string, photo: string) {
 }
 
 export function request(input: RequestInfo | URL, init?: RequestInit) {
-  return fetch(`${API_URL}${input}`, init)
+  const url = `${API_URL}${input}`
+  console.log('🚀🚀🚀🚀', url)
+  return fetch(url, init)
 }
